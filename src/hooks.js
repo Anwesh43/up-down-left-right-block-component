@@ -38,6 +38,10 @@ export const useDimension = () => {
             }
         }
     })
+    return {
+        w,
+        h
+    }
 }
 
 export const useStyle = (w, h, scale) => {
@@ -51,12 +55,12 @@ export const useStyle = (w, h, scale) => {
     return {
         getBlockStyle(i) {
             const si = 1 - 2 * i
-            const left = `${fixedX * (1 - si) + size * i}px`
-            const top = `${fixedY * (1  - si)}px`
+            const left = `${fixedX * (1 - si * sf2) + size * i}px`
+            const top = `${fixedY * (1  - si * sf1)}px`
             const width = `${size}px`
             const height = `${size}px`
             const background = '#3F51B5'
-            return {position, top, left, width, height}
+            return {position, top, left, width, height, background}
         }
     }
 }
